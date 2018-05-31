@@ -25,7 +25,7 @@ botaoAdicionar.addEventListener("click", function(event) { // adicionando um eve
     gorduraTd.textContent = gorduraAdd;
     imcTd.textContent = calculaImc(pesoAdd, alturaAdd);
 
-    // adiciono os TD's criados dentro da pacienteTr > tr pai > td filho
+    // adiciono os TD's criados dentro da pacienteTr > tr pai > td filho // githubteste
 
     pacienteTr.appendChild(nomeTd);
     pacienteTr.appendChild(pesoTd);

@@ -1,40 +1,94 @@
 var botaoAdicionar = document.querySelector("#adicionar-paciente");
-botaoAdicionar.addEventListener("click", function(event) { // adicionando um evento ao botÃ£o atravÃ©s do click
-    event.preventDefault();
+botaoAdicionar.addEventListener("click", function(event) {
+
+    event.preventDefault(); // Pausa no Form
+
     var formAdd = document.querySelector("#form-adicona");
 
-    // Extraindo as informaÃ§Ãµes do Form
+    var paciente = obtemPacientedoForm(formAdd);
 
-    var nomeAdd = (formAdd.nome.value);
-    var pesoAdd = (formAdd.peso.value);
-    var alturaAdd = (formAdd.altura.value);
-    var gorduraAdd = (formAdd.gordura.value);
-    // criando o elemento TR para montar a estrutura do formulÃ¡rio
-    // teste github
-    var pacienteTr = document.createElement("tr");
-    var nomeTd = document.createElement("td");
-    var pesoTd = document.createElement("td");
-    var alturaTd = document.createElement("td");
-    var gorduraTd = document.createElement("td");
-    var imcTd = document.createElement("td");
+    var pacienteTR = MontaTR(paciente);
 
-    // adiciono o conteÃºdo das varÃ­aveis dentro das tds criadas para os elementos nÃ£o ficarem soltos
-    nomeTd.textContent = nomeAdd;
-    pesoTd.textContent = pesoAdd;
-    alturaTd.textContent = alturaAdd;
-    gorduraTd.textContent = gorduraAdd;
-    imcTd.textContent = calculaImc(pesoAdd, alturaAdd);
+    if (validaCampos(paciente)) {
+        var tabela = document.querySelector("#tabela-pacientes"); // busco a tabela de paciente
+        tabela.appendChild(pacienteTR); // apendo meu a estrutura criada
+        formAdd.reset(); //limpo o form
+    } else {
 
-    // adiciono os TD's criados dentro da pacienteTr > tr pai > td filho // githubteste
+        alert("Existem campos que não foram preenchidos, verifique!")
+        return null;
+    }
 
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
-    // busco a tbody (tabela-paciente) do Html para adicionar dentro da tabelas os registros extraÃ­dos acima
-    // adicionando o paciente na tabela
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    var tabela = document.querySelector("#tabela-pacientes"); // busco a tabela de paciente
+    tabela.appendChild(pacienteTR); // apendo meu a estrutura criada
+    formAdd.reset(); //limpo o form
 
 });
+
+/*
+Nome: obtemPacientedoForm
+Objetivo: Obter o conteúdo dos campos
+*/
+
+function obtemPacientedoForm(form) {
+
+    var paciente = {
+        nome: (form.nome.value),
+        peso: (form.peso.value),
+        altura: (form.altura.value),
+        gordura: (form.gordura.value),
+        imc: calculaImc(form.peso.value, form.altura.value)
+    }
+    return paciente;
+}
+
+/*
+Nome: MontaTR
+Objetivo: Montar os TR's e os TD's com base no DOM
+Parâmetro: Formulário do paciente;
+*/
+function MontaTR(paciente) {
+    var pacienteTr = document.createElement("tr");
+    pacienteTr.classList.add("paciente");
+
+    pacienteTr.appendChild(MontaTD(paciente.nome, "info-nome"))
+    pacienteTr.appendChild(MontaTD(paciente.peso, "info-peso"))
+    pacienteTr.appendChild(MontaTD(paciente.altura, "info-altura"))
+    pacienteTr.appendChild(MontaTD(paciente.gordura, "info-gordura"))
+    pacienteTr.appendChild(MontaTD(paciente.imc, "info-imc"))
+
+    return pacienteTr;
+}
+
+/*
+Nome: MontaTD
+Objetivo: Monta os Td's com base no DOM
+PArâmetros: Dado > refere-se ao campo do TD que será criado;
+            classe > a informação da classe do TD que está sendo criado;
+*/
+function MontaTD(dado, classe) {
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.classList.add(classe);
+
+    return td;
+}
+/*
+Nome: ValidaCampos
+Objetivo: Verificar se  campo foi preenchido
+Parâmetros: Objeto Paciente criado através do Form
+*/
+function validaCampos(paciente) {
+    var lControl = false;
+
+    if (paciente.nome == "" || paciente.nome == null) {
+        lControl = true;
+        elseif(paciente.peso == "" || paciente.peso == null)
+        lControl = true;
+        elseif(paciente.altura == "" || paciente.altura == null)
+        lControl = true;
+        elseif(paciente.gordura == "" || paciente.gordura == null)
+        lControl = true;
+    }
+    return lControl;
+}

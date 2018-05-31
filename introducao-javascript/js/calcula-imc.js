@@ -1,11 +1,10 @@
-var titulo = document.querySelector(".titulo") ;
+var titulo = document.querySelector(".titulo");
 titulo.textContent = "Espaço Vida Saudável";
 
 var pacientes = document.querySelectorAll(".paciente");
 for (var i = 0; i < pacientes.length; i++) {
 
     var paciente = pacientes[i];
-
     var tdPeso = paciente.querySelector(".info-peso");
     var peso = tdPeso.textContent;
 
@@ -18,30 +17,28 @@ for (var i = 0; i < pacientes.length; i++) {
     var lControlA = true;
 
     if (peso <= 0 || peso >= 1000) {
-        console.log("Peso Inválido!")
-        tdImc.textContent = "Peso inválido";
+        tdImc.textContent = "Peso inv�lido";
         paciente.classList.add("paciente-invalido");
         lControlP = false;
-        console.log(lControlP);
     }
 
     if (altura <= 0 || altura >= 3.00) {
-        tdImc.textContent = "Altura inválida";
+        tdImc.textContent = "Altura inv�lido";
         paciente.classList.add("paciente-invalido");
         lControlA = false;
     }
 
-  if (lControlA && lControlP) {
+    if (lControlA && lControlP) {
         var imc = peso / (altura * altura);
-        tdImc.textContent = calculaImc(peso,altura);
+        tdImc.textContent = calculaImc(peso, altura);
     }
 }
 
 
-function calculaImc(peso, altura){
-    var imc = 0 ;
+function calculaImc(peso, altura) {
+    var imc = 0;
     imc = peso / (altura * altura);
 
-    return imc.toFixed(2) ;
+    return imc.toFixed(2);
 
 }

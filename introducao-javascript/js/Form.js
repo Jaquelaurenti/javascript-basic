@@ -8,21 +8,29 @@ botaoAdicionar.addEventListener("click", function(event) {
     var paciente = obtemPacientedoForm(formAdd);
 
     var pacienteTR = MontaTR(paciente);
+    debugger
+    if (!validaCampos(paciente)) {
+        if (validaDadosAltura(paciente.altura)) {
+            return true;
+        } else {
+            alert("Altura inválida!");
+            return;
+        }
 
-    if (validaCampos(paciente)) {
+        if (validaDadosPeso(paciente.peso)) {
+            return true;
+        } else {
+            alert("Peso inválido!");
+            return;
+        }
         var tabela = document.querySelector("#tabela-pacientes"); // busco a tabela de paciente
         tabela.appendChild(pacienteTR); // apendo meu a estrutura criada
         formAdd.reset(); //limpo o form
     } else {
 
         alert("Existem campos que não foram preenchidos, verifique!")
-        return null;
+        return;
     }
-
-    var tabela = document.querySelector("#tabela-pacientes"); // busco a tabela de paciente
-    tabela.appendChild(pacienteTR); // apendo meu a estrutura criada
-    formAdd.reset(); //limpo o form
-
 });
 
 /*
@@ -83,12 +91,32 @@ function validaCampos(paciente) {
 
     if (paciente.nome == "" || paciente.nome == null) {
         lControl = true;
-        elseif(paciente.peso == "" || paciente.peso == null)
+        return lControl;
+    } else if (paciente.peso == "" || paciente.peso == null) {
         lControl = true;
-        elseif(paciente.altura == "" || paciente.altura == null)
+        return lControl;
+    } else if (paciente.altura == "" || paciente.altura == null) {
         lControl = true;
-        elseif(paciente.gordura == "" || paciente.gordura == null)
+        return lControl;
+    } else if (paciente.gordura == "" || paciente.gordura == null) {
         lControl = true;
+        return lControl;
     }
-    return lControl;
+}
+/**/
+function validaDadosAltura(paciente) {
+    if (validaAltura(paciente.altura)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**/
+function validaDadosPeso(paciente) {
+    if (validaAltura(paciente.peso)) {
+        return true;
+    } else {
+        return false;
+    }
 }

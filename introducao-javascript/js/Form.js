@@ -10,6 +10,13 @@ botaoAdicionar.addEventListener("click", function(event) { // adicionando um eve
     var alturaAdd = (formAdd.altura.value);
     var gorduraAdd = (formAdd.gordura.value);
 
+
+
+
+
+
+    /// teste git
+
     // criando o elemento TR para montar a estrutura do formulário
     // teste github
     var pacienteTr = document.createElement("tr");

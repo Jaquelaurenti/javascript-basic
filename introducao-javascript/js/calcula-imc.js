@@ -33,7 +33,6 @@ for (var i = 0; i < pacientes.length; i++) {
         tdImc.textContent = calculaImc(peso, altura);
     }
 }
-
 /*
 Nome: ValidaPeso
 Objetivo: Validar se o peso inserido é valido

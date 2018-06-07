@@ -6,26 +6,31 @@ botaoAdicionar.addEventListener("click", function(event) {
     var formAdd = document.querySelector("#form-adicona");
 
     var paciente = obtemPacientedoForm(formAdd);
+    var lOK = false;
 
     var pacienteTR = MontaTR(paciente);
-    debugger
+
     if (!validaCampos(paciente)) {
         if (validaDadosAltura(paciente.altura)) {
-            return true;
+            lOK = true;
         } else {
             alert("Altura inválida!");
             return;
         }
 
         if (validaDadosPeso(paciente.peso)) {
-            return true;
+            lOK = true;
         } else {
             alert("Peso inválido!");
             return;
         }
-        var tabela = document.querySelector("#tabela-pacientes"); // busco a tabela de paciente
-        tabela.appendChild(pacienteTR); // apendo meu a estrutura criada
-        formAdd.reset(); //limpo o form
+
+        if (lOK) {
+            var tabela = document.querySelector("#tabela-pacientes"); // busco a tabela de paciente
+            tabela.appendChild(pacienteTR); // apendo meu a estrutura criada
+            formAdd.reset(); //limpo o form
+        }
+
     } else {
 
         alert("Existem campos que não foram preenchidos, verifique!")
@@ -105,7 +110,7 @@ function validaCampos(paciente) {
 }
 /**/
 function validaDadosAltura(paciente) {
-    if (validaAltura(paciente.altura)) {
+    if (validaAltura(paciente)) {
         return true;
     } else {
         return false;
@@ -114,7 +119,7 @@ function validaDadosAltura(paciente) {
 
 /**/
 function validaDadosPeso(paciente) {
-    if (validaAltura(paciente.peso)) {
+    if (validaPeso(paciente)) {
         return true;
     } else {
         return false;

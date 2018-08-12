@@ -1,5 +1,5 @@
 var titulo = document.querySelector(".titulo");
-titulo.textContent = "Espaço Vida Saudável";
+titulo.textContent = "Espaï¿½o Vida Saudï¿½vel";
 
 var pacientes = document.querySelectorAll(".paciente");
 for (var i = 0; i < pacientes.length; i++) {
@@ -17,13 +17,13 @@ for (var i = 0; i < pacientes.length; i++) {
     var lControlA = validaAltura(altura);
 
     if (!lControlP) {
-        tdImc.textContent = "Peso inválido";
+        tdImc.textContent = "Peso invï¿½lido";
         paciente.classList.add("paciente-invalido");
         lControlP = false;
     }
 
     if (!lControlA) {
-        tdImc.textContent = "Altura inválido";
+        tdImc.textContent = "Altura invï¿½lido";
         paciente.classList.add("paciente-invalido");
         lControlA = false;
     }
@@ -35,8 +35,8 @@ for (var i = 0; i < pacientes.length; i++) {
 }
 /*
 Nome: ValidaPeso
-Objetivo: Validar se o peso inserido é valido
-Parâmetros: Peso do Campo
+Objetivo: Validar se o peso inserido ï¿½ valido
+Parï¿½metros: Peso do Campo
 */
 function validaPeso(peso) {
     if (peso >= 0 && peso <= 1000) {
@@ -47,8 +47,8 @@ function validaPeso(peso) {
 }
 /*
 Nome: validaAltura
-Objetivo: Validar se a altura inserida é válida
-Parâmetros: Altura do campo*/
+Objetivo: Validar se a altura inserida ï¿½ vï¿½lida
+Parï¿½metros: Altura do campo*/
 function validaAltura(altura) {
     if (altura >= 0 && altura <= 3.0) {
         return true;
@@ -59,7 +59,7 @@ function validaAltura(altura) {
 /*
 Nome: CalculaIMC
 Objetivo: Calcular o IMC inserido
-Parâmetros: Peso e altura que vem do Form
+Parï¿½metros: Peso e altura que vem do Form
 */
 function calculaImc(peso, altura) {
     var imc = 0;

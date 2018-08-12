@@ -14,14 +14,14 @@ botaoAdicionar.addEventListener("click", function(event) {
         if (validaDadosAltura(paciente.altura)) {
             lOK = true;
         } else {
-            alert("Altura inválida!");
+            alert("Altura invï¿½lida!");
             return;
         }
 
         if (validaDadosPeso(paciente.peso)) {
             lOK = true;
         } else {
-            alert("Peso inválido!");
+            alert("Peso invï¿½lido!");
             return;
         }
 
@@ -33,14 +33,14 @@ botaoAdicionar.addEventListener("click", function(event) {
 
     } else {
 
-        alert("Existem campos que não foram preenchidos, verifique!")
+        alert("Existem campos que nï¿½o foram preenchidos, verifique!")
         return;
     }
 });
 
 /*
 Nome: obtemPacientedoForm
-Objetivo: Obter o conteúdo dos campos
+Objetivo: Obter o conteï¿½do dos campos
 */
 
 function obtemPacientedoForm(form) {
@@ -58,7 +58,7 @@ function obtemPacientedoForm(form) {
 /*
 Nome: MontaTR
 Objetivo: Montar os TR's e os TD's com base no DOM
-Parâmetro: Formulário do paciente;
+Parï¿½metro: Formulï¿½rio do paciente;
 */
 function MontaTR(paciente) {
     var pacienteTr = document.createElement("tr");
@@ -76,8 +76,8 @@ function MontaTR(paciente) {
 /*
 Nome: MontaTD
 Objetivo: Monta os Td's com base no DOM
-PArâmetros: Dado > refere-se ao campo do TD que será criado;
-            classe > a informação da classe do TD que está sendo criado;
+PArï¿½metros: Dado > refere-se ao campo do TD que serï¿½ criado;
+            classe > a informaï¿½ï¿½o da classe do TD que estï¿½ sendo criado;
 */
 function MontaTD(dado, classe) {
     var td = document.createElement("td");
@@ -89,7 +89,7 @@ function MontaTD(dado, classe) {
 /*
 Nome: ValidaCampos
 Objetivo: Verificar se  campo foi preenchido
-Parâmetros: Objeto Paciente criado através do Form
+Parï¿½metros: Objeto Paciente criado atravï¿½s do Form
 */
 function validaCampos(paciente) {
     var lControl = false;

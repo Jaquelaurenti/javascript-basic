@@ -17,7 +17,7 @@ for (var i = 0; i < pacientes.length; i++) {
     var lControlA = validaAltura(altura);
 
     if (!lControlP) {
-        tdImc.textContent = "Peso inv�lido";
+        tdImc.textContent = "Peso inválido";
         paciente.classList.add("paciente-invalido");
         lControlP = false;
     }
@@ -33,10 +33,12 @@ for (var i = 0; i < pacientes.length; i++) {
         tdImc.textContent = calculaImc(peso, altura);
     }
 }
+
+
 /*
 Nome: ValidaPeso
-Objetivo: Validar se o peso inserido � valido
-Par�metros: Peso do Campo
+Objetivo: Validar se o peso inserido é valido
+Parâmetros: Peso do Campo
 */
 function validaPeso(peso) {
     if (peso >= 0 && peso <= 1000) {
